@@ -1,6 +1,6 @@
 {
   "name": "s3-kilatstorage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect S3 KilatStorage with NodeJS",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,20 @@
     "S3",
     "kilatstorage.com"
   ],
-  "author": "Yudha Pratama",
+  "homepage": "https://github.com/LordAur/KilatStorages3",
+  "bugs": {
+    "url": "https://github.com/LordAur/KilatStorages3/issues",
+    "email": "yudha.webdev@gmail.com"
+  },
+  "author": {
+    "name": "Yudha Pratama",
+    "email": "yudha.webdev@gmail.com",
+    "url": "https://yudhapratama.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LordAur/KilatStorages3"
+  },
   "license": "MIT",
   "dependencies": {
     "shelljs": "^0.8.2"
