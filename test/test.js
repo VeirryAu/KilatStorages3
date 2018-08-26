@@ -1,7 +1,7 @@
 const s3 = require('../index');
 
-it('Make bucket', (done) => {
-  s3.makeBucket('yudhapratama.com')
+it('make bucket', (done) => {
+  s3.makeBucket('tester')
     .then(() => {
       done();
     })
@@ -10,8 +10,8 @@ it('Make bucket', (done) => {
     });
 });
 
-it('Remove bucket', (done) => {
-  s3.removeBucket('yudhapratama.com')
+it('remove bucket', (done) => {
+  s3.removeBucket('tester')
     .then(() => {
       done();
     })
@@ -20,7 +20,7 @@ it('Remove bucket', (done) => {
     });
 });
 
-it('Get list bucket', (done) => {
+it('get bucket', (done) => {
   s3.listBuckets()
     .then(() => {
       done();
@@ -30,8 +30,8 @@ it('Get list bucket', (done) => {
     });
 });
 
-it('Get List Object', (done) => {
-  s3.listObject('s3.kerakera.id')
+it('get object', (done) => {
+  s3.listObject('yudhapratama.com')
     .then(() => {
       done();
     })
