@@ -30,6 +30,16 @@ it('get bucket', (done) => {
     });
 });
 
+it('get all object', (done) => {
+  s3.listAllObject()
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});
+
 it('get object', (done) => {
   s3.listObject('yudhapratama.com')
     .then(() => {

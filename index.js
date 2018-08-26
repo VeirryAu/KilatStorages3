@@ -40,6 +40,19 @@ KilatS3.listBuckets = function listBuckets() {
   });
 };
 
+KilatS3.listAllObject = function listAllObject() {
+  return new Promise((resolve, reject) => {
+    shell.exec('s3cmd la', (code, output, err) => {
+      if (code === 0) {
+        const echo = output.split('\n');
+        resolve(echo);
+      } else {
+        reject(new Error(err));
+      }
+    });
+  });
+};
+
 KilatS3.listObject = function listObject(bucketName) {
   return new Promise((resolve, reject) => {
     shell.exec(`s3cmd ls s3://${bucketName}`, (code, output, err) => {

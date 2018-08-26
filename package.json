@@ -8,6 +8,7 @@
     "test:make-bucket": "mocha -g 'make bucket'",
     "test:remove-bucket": "mocha -g 'remove bucket'",
     "test:get-bucket": "mocha -g 'get bucket'",
+    "test:get-all-object": "mocha -g 'get all object'",
     "test:get-object": "mocha -g 'get object'"
   },
   "keywords": [
