@@ -78,3 +78,13 @@ it('download object', (done) => {
       done(err.message);
     });
 });
+
+it('remove object', (done) => {
+  s3.removeObject('yudhapratama.com/test.txt')
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});

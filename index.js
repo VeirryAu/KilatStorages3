@@ -79,6 +79,18 @@ KilatS3.downloadObject = function downloadObject(bucketPath, localDirPath) {
   });
 };
 
+KilatS3.removeObject = function removeObject(bucketPath) {
+  return new Promise((resolve, reject) => {
+    shell.exec(`s3cmd del s3://${bucketPath}`, (code, output, err) => {
+      if (code === 0) {
+        resolve(output);
+      } else {
+        reject(new Error(err));
+      }
+    });
+  });
+};
+
 KilatS3.listObject = function listObject(bucketName) {
   return new Promise((resolve, reject) => {
     shell.exec(`s3cmd ls s3://${bucketName}`, (code, output, err) => {

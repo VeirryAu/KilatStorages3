@@ -11,7 +11,8 @@
     "test:get-all-object": "mocha -g 'get all object'",
     "test:get-object": "mocha -g 'get object'",
     "test:put-object": "mocha -g 'put object'",
-    "test:download-object": "mocha -g 'download object'"
+    "test:download-object": "mocha -g 'download object'",
+    "test:remove-object": "mocha -g 'remove object'"
   },
   "keywords": [
     "S3",
