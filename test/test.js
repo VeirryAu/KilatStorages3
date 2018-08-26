@@ -1,4 +1,5 @@
 const s3 = require('../index');
+const shell = require('shelljs');
 
 it('make bucket', (done) => {
   s3.makeBucket('tester')
@@ -48,4 +49,22 @@ it('get object', (done) => {
     .catch((err) => {
       done(err.message);
     });
+});
+
+it('put object', (done) => {
+  shell.exec('touch ~/test.txt', (code, output, error) => {
+    if (code === 0) {
+      s3.putObject('~/test.txt', 'yudhapratama.com')
+        .then((url) => {
+          shell.exec('rm ~/test.txt');
+          console.log(url);
+          done();
+        })
+        .catch((err) => {
+          done(err.message);
+        });
+    } else {
+      throw error;
+    }
+  });
 });
