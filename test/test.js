@@ -68,3 +68,13 @@ it('put object', (done) => {
     }
   });
 });
+
+it('download object', (done) => {
+  s3.downloadObject('yudhapratama.com/test.txt', '~/')
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});

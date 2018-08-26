@@ -10,7 +10,8 @@
     "test:get-bucket": "mocha -g 'get bucket'",
     "test:get-all-object": "mocha -g 'get all object'",
     "test:get-object": "mocha -g 'get object'",
-    "test:put-object": "mocha -g 'put object'"
+    "test:put-object": "mocha -g 'put object'",
+    "test:download-object": "mocha -g 'download object'"
   },
   "keywords": [
     "S3",

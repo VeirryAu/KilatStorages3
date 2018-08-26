@@ -67,6 +67,18 @@ KilatS3.putObject = function putObject(pathFile, bucketName) {
   });
 };
 
+KilatS3.downloadObject = function downloadObject(bucketPath, localDirPath) {
+  return new Promise((resolve, reject) => {
+    shell.exec(`s3cmd get s3://${bucketPath} ${localDirPath}`, (code, output, err) => {
+      if (code === 0) {
+        resolve(output);
+      } else {
+        reject(new Error(err));
+      }
+    });
+  });
+};
+
 KilatS3.listObject = function listObject(bucketName) {
   return new Promise((resolve, reject) => {
     shell.exec(`s3cmd ls s3://${bucketName}`, (code, output, err) => {
