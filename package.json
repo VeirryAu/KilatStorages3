@@ -12,7 +12,9 @@
     "test:get-object": "mocha -g 'get object'",
     "test:put-object": "mocha -g 'put object'",
     "test:download-object": "mocha -g 'download object'",
-    "test:remove-object": "mocha -g 'remove object'"
+    "test:remove-object": "mocha -g 'remove object'",
+    "test:disk-usage": "mocha -g 'disk usage'",
+    "test:disk-usage-bucket": "mocha -g 'disk usage bucket'"
   },
   "keywords": [
     "S3",

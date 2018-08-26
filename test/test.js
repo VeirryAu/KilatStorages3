@@ -1,5 +1,6 @@
-const s3 = require('../index');
 const shell = require('shelljs');
+
+const s3 = require('../index');
 
 it('make bucket', (done) => {
   s3.makeBucket('tester')
@@ -81,6 +82,26 @@ it('download object', (done) => {
 
 it('remove object', (done) => {
   s3.removeObject('yudhapratama.com/test.txt')
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});
+
+it('disk usage', (done) => {
+  s3.diskUsage()
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});
+
+it('disk usage bucket', (done) => {
+  s3.diskUsage('yudhapratama.com')
     .then(() => {
       done();
     })

@@ -1,4 +1,3 @@
-const fs = require('fs');
 const shell = require('shelljs');
 
 function KilatS3() { }
@@ -101,6 +100,28 @@ KilatS3.listObject = function listObject(bucketName) {
         reject(new Error(err));
       }
     });
+  });
+};
+
+KilatS3.diskUsage = function diskUsage(bucketName = null) {
+  return new Promise((resolve, reject) => {
+    if (bucketName === null) {
+      shell.exec('s3cmd du', (code, output, err) => {
+        if (code === 0) {
+          resolve(output);
+        } else {
+          reject(new Error(err));
+        }
+      });
+    } else {
+      shell.exec(`s3cmd du s3://${bucketName}`, (code, output, err) => {
+        if (code === 0) {
+          resolve(output);
+        } else {
+          reject(new Error(err));
+        }
+      });
+    }
   });
 };
 
