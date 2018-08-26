@@ -14,7 +14,7 @@ npm i s3-kilatstorage
 ### Make bucket
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.makeBucket('bucket-name')
+kilatstorage.makeBucket('bucket-name')
   .then((status) => {
     res.json(status);
   });
@@ -22,7 +22,7 @@ s3.makeBucket('bucket-name')
 ### Remove Bucket
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.removeBucket('bucket-name')
+kilatstorage.removeBucket('bucket-name')
   .then((status) => {
     res.json(status);
   });
@@ -30,7 +30,7 @@ s3.removeBucket('bucket-name')
 ### Get all bucket
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.listBuckets()
+kilatstorage.listBuckets()
   .then((list) => {
     res.json(list);
   });
@@ -38,7 +38,7 @@ s3.listBuckets()
 ### Get all object
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.listAllObject()
+kilatstorage.listAllObject()
   .then((list) => {
     res.json(list);
   });
@@ -46,7 +46,7 @@ s3.listAllObject()
 ### Put object
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.putObject('path-file', 'bucket-name')
+kilatstorage.putObject('path-file', 'bucket-name')
   .then((publicUrl) => {
     res.json(publicUrl);
   });
@@ -54,7 +54,7 @@ s3.putObject('path-file', 'bucket-name')
 ### Download object
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.downloadObject('bucket-path', 'local-path-directory')
+kilatstorage.downloadObject('bucket-path', 'local-path-directory')
   .then((status) => {
     res.json(status);
   });
@@ -62,7 +62,7 @@ s3.downloadObject('bucket-path', 'local-path-directory')
 ### Remove object
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.removeObject('bucket-path')
+kilatstorage.removeObject('bucket-path')
   .then((status) => {
     res.json(status);
   });
@@ -70,7 +70,7 @@ s3.removeObject('bucket-path')
 ### List object
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.listObject('bucket-name')
+kilatstorage.listObject('bucket-name')
   .then((list) => {
     res.json(list);
   });
@@ -78,7 +78,7 @@ s3.listObject('bucket-name')
 ### Show info disk usage for all
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.diskUsage()
+kilatstorage.diskUsage()
   .then((list) => {
     res.json(list);
   });
@@ -86,7 +86,7 @@ s3.diskUsage()
 ### Show info disk usage for single bucket
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-s3.diskUsage('bucket-name')
+kilatstorage.diskUsage('bucket-name')
   .then((list) => {
     res.json(list);
   });
