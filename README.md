@@ -43,10 +43,18 @@ kilatstorage.listAllObject()
     res.json(list);
   });
 ```
-### Put object
+### Put object with private access file
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
-kilatstorage.putObject('path-file', 'bucket-name')
+kilatstorage.putObjectPrivate('path-file', 'bucket-name')
+  .then((privateUrl) => {
+    res.json(privateUrl);
+  });
+```
+### Put object with public access file
+```javascript
+const kilatstorage = require('s3-kilatstorage');
+kilatstorage.putObjectPublic('path-file', 'bucket-name')
   .then((publicUrl) => {
     res.json(publicUrl);
   });
