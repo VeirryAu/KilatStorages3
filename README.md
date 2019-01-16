@@ -1,5 +1,5 @@
 # KilatStorageS3 - NodeJs S3 Client for KilatStorage
-This package is a S3 client for NodeJs 8.X or greater. KilatStorageS3 uses a bash command to run s3cmd which has been configured and connected to the kilatstorage service.
+This package is a S3 client for NodeJs 8.X or greater. KilatStorageS3 uses a bash command to run s3cmd which has been configured and connected to the kilatstorage service. You can use this package for Amazon S3 service too.
 
 # Requirements
 *  KilatStorageS3 requires NodeJs 8.X or greater
