@@ -52,9 +52,23 @@ KilatS3.listAllObject = function listAllObject() {
   });
 };
 
-KilatS3.putObject = function putObject(pathFile, bucketName) {
+KilatS3.putObjectPrivate = function putObject(pathFile, bucketName) {
   return new Promise((resolve, reject) => {
-    shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName}`, (code, output, err) => {
+    shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName} --acl-private`, (code, output, err) => {
+      if (code === 0) {
+        const echoArray = output.split('[1 of 1]');
+        const publicUrl = echoArray[1].split(' ');
+        resolve(publicUrl[6]);
+      } else {
+        reject(new Error(err));
+      }
+    });
+  });
+};
+
+KilatS3.putObjectPublic = function putObject(pathFile, bucketName) {
+  return new Promise((resolve, reject) => {
+    shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName} --acl-public`, (code, output, err) => {
       if (code === 0) {
         const echoArray = output.split('[1 of 1]');
         const publicUrl = echoArray[1].split(' ');
