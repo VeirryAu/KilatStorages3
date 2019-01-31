@@ -83,6 +83,16 @@ kilatstorage.listObject('bucket-name')
     res.json(list);
   });
 ```
+
+### Check object existing
+```javascript
+const kilatstorage = require('s3-kilatstorage');
+kilatstorage.existsObject('bucket-name', 'file-name')
+  .then((status) => {
+    res.json(status);
+  });
+```
+
 ### Show info disk usage for all
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
