@@ -1,6 +1,6 @@
 {
   "name": "s3-kilatstorage",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Connect S3 KilatStorage with NodeJS",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,8 @@
     "S3",
     "kilatstorage.com",
     "aws",
-    "amazon-s3"
+    "amazon-s3",
+    "amazon simple storage service"
   ],
   "homepage": "https://github.com/LordAur/KilatStorages3",
   "bugs": {
