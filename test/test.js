@@ -90,6 +90,16 @@ it('remove object', (done) => {
     });
 });
 
+it('check file exists', (done) => {
+  s3.existsObject('boslelangstorage', 'ffe4bfca-bdd0-40ef-b006-7b22443a9f78.jpg')
+    .then((exists) => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});
+
 it('disk usage', (done) => {
   s3.diskUsage()
     .then(() => {

@@ -117,6 +117,24 @@ KilatS3.listObject = function listObject(bucketName) {
   });
 };
 
+KilatS3.existsObject = function existsObject(bucketName, fileName) {
+  return new Promise((resolve, reject) => {
+    shell.exec(`s3cmd ls s3://${bucketName}/${fileName} | wc -l`, (code, output, err) => {
+      if (code === 0) {
+        const echo = output.split('\n');
+        const check = echo[0].replace(/\s/g, '');
+        if (check === '0') {
+          resolve(false);
+        } else {
+          resolve(true);
+        }
+      } else {
+        reject(new Error(err));
+      }
+    });
+  });
+};
+
 KilatS3.diskUsage = function diskUsage(bucketName = null) {
   return new Promise((resolve, reject) => {
     if (bucketName === null) {

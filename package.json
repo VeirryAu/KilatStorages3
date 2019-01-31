@@ -13,6 +13,7 @@
     "test:put-object": "mocha -g 'put object'",
     "test:download-object": "mocha -g 'download object'",
     "test:remove-object": "mocha -g 'remove object'",
+    "test:exists-file": "mocha -g 'check file exists' --timeout 100000",
     "test:disk-usage": "mocha -g 'disk usage'",
     "test:disk-usage-bucket": "mocha -g 'disk usage bucket'"
   },
