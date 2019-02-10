@@ -53,21 +53,14 @@ it('get object', (done) => {
 });
 
 it('put object', (done) => {
-  shell.exec('touch ~/test.txt', (code, output, error) => {
-    if (code === 0) {
-      s3.putObject('~/test.txt', 'yudhapratama.com')
-        .then((url) => {
-          shell.exec('rm ~/test.txt');
-          console.log(url);
-          done();
-        })
-        .catch((err) => {
-          done(err.message);
-        });
-    } else {
-      throw error;
-    }
-  });
+  s3.putObjectPublic('~/Documents/Image/avatar-1577909_1280.png', 'boslelangstorage/admin/profile')
+    .then((url) => {
+      console.log(url);
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
 });
 
 it('download object', (done) => {

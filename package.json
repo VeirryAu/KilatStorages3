@@ -10,7 +10,7 @@
     "test:get-bucket": "mocha -g 'get bucket'",
     "test:get-all-object": "mocha -g 'get all object'",
     "test:get-object": "mocha -g 'get object'",
-    "test:put-object": "mocha -g 'put object'",
+    "test:put-object": "mocha -g 'put object' --timeout 100000",
     "test:download-object": "mocha -g 'download object'",
     "test:remove-object": "mocha -g 'remove object'",
     "test:exists-file": "mocha -g 'check file exists' --timeout 100000",
@@ -46,6 +46,7 @@
     "eslint": "^5.4.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "lodash": ">=4.17.11"
   }
 }
