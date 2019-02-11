@@ -53,9 +53,9 @@ it('get object', (done) => {
 });
 
 it('put object', (done) => {
-  s3.putObjectPublic('~/Documents/Image/avatar-1577909_1280.png', 'boslelangstorage')
+  s3.putObjectPublic('~/Documents/Image/avatar-1577909_1280.png', 'bookslifestorage')
     .then((url) => {
-      console.log(url);
+      console.log(`url => ${url}`);
       done();
     })
     .catch((err) => {

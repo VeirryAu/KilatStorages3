@@ -57,8 +57,8 @@ KilatS3.putObjectPrivate = function putObjectPrivate(pathFile, bucketName) {
     shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName} --acl-private`, (code, output, err) => {
       if (code === 0) {
         const echoArray = output.split('Public URL of the object is: ');
-        const publicUrl = echoArray[(echoArray.length - 1)].split('/').toString().replace(/\n/g, '');
-        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1)]}`);
+        const publicUrl = echoArray[(echoArray.length - 1)].split('/');
+        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1).toString().replace(/\n/g, '')]}`);
       } else {
         reject(new Error(err));
       }
@@ -71,8 +71,8 @@ KilatS3.putObjectPublic = function putObjectPublic(pathFile, bucketName) {
     shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName} --acl-public`, (code, output, err) => {
       if (code === 0) {
         const echoArray = output.split('Public URL of the object is: ');
-        const publicUrl = echoArray[(echoArray.length - 1)].split('/').toString().replace(/\n/g, '');
-        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1)]}`);
+        const publicUrl = echoArray[(echoArray.length - 1)].split('/');
+        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1).toString().replace(/\n/g, '')]}`);
       } else {
         reject(new Error(err));
       }
