@@ -58,7 +58,7 @@ KilatS3.putObjectPrivate = function putObjectPrivate(pathFile, bucketName) {
       if (code === 0) {
         const echoArray = output.split('Public URL of the object is: ');
         const publicUrl = echoArray[(echoArray.length - 1)].split('/');
-        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1).toString().replace(/\n/g, '')]}`);
+        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1)].toString().replace(/[\n\r]/g, '')}`);
       } else {
         reject(new Error(err));
       }
@@ -72,7 +72,7 @@ KilatS3.putObjectPublic = function putObjectPublic(pathFile, bucketName) {
       if (code === 0) {
         const echoArray = output.split('Public URL of the object is: ');
         const publicUrl = echoArray[(echoArray.length - 1)].split('/');
-        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1).toString().replace(/\n/g, '')]}`);
+        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1)].toString().replace(/[\n\r]/g, '')}`);
       } else {
         reject(new Error(err));
       }
