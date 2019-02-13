@@ -1,5 +1,7 @@
 const shell = require('shelljs');
 
+const action = require('./lib/action');
+
 function KilatS3() { }
 
 KilatS3.makeBucket = function makeBucket(bucketName) {
@@ -54,29 +56,37 @@ KilatS3.listAllObject = function listAllObject() {
 
 KilatS3.putObjectPrivate = function putObjectPrivate(pathFile, bucketName) {
   return new Promise((resolve, reject) => {
-    shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName} --acl-private`, (code, output, err) => {
-      if (code === 0) {
-        const echoArray = output.split('Public URL of the object is: ');
-        const publicUrl = echoArray[(echoArray.length - 1)].split('/');
-        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1)].toString().replace(/[\n\r]/g, '')}`);
-      } else {
-        reject(new Error(err));
-      }
-    });
+    action.checkBucketPrefixes(bucketName)
+      .then((finalBucketName) => {
+        shell.exec(`s3cmd put -P ${pathFile} s3://${finalBucketName} --acl-private`, (code, output, err) => {
+          if (code === 0) {
+            action.getPublicUrl(output, finalBucketName)
+              .then((publicUrl) => {
+                resolve(publicUrl);
+              });
+          } else {
+            reject(new Error(err));
+          }
+        });
+      });
   });
 };
 
 KilatS3.putObjectPublic = function putObjectPublic(pathFile, bucketName) {
   return new Promise((resolve, reject) => {
-    shell.exec(`s3cmd put -P ${pathFile} s3://${bucketName} --acl-public`, (code, output, err) => {
-      if (code === 0) {
-        const echoArray = output.split('Public URL of the object is: ');
-        const publicUrl = echoArray[(echoArray.length - 1)].split('/');
-        resolve(`https://${bucketName}.s3.amazonaws.com/${publicUrl[(publicUrl.length - 1)].toString().replace(/[\n\r]/g, '')}`);
-      } else {
-        reject(new Error(err));
-      }
-    });
+    action.checkBucketPrefixes(bucketName)
+      .then((finalBucketName) => {
+        shell.exec(`s3cmd put -P ${pathFile} s3://${finalBucketName} --acl-public`, (code, output, err) => {
+          if (code === 0) {
+            action.getPublicUrl(output, finalBucketName)
+              .then((publicUrl) => {
+                resolve(publicUrl);
+              });
+          } else {
+            reject(new Error(err));
+          }
+        });
+      });
   });
 };
 
