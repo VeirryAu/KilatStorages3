@@ -1,5 +1,3 @@
-const shell = require('shelljs');
-
 const s3 = require('../index');
 
 it('make bucket', (done) => {
@@ -85,7 +83,7 @@ it('remove object', (done) => {
 
 it('check file exists', (done) => {
   s3.existsObject('boslelangstorage', 'ffe4bfca-bdd0-40ef-b006-7b22443a9f78.jpg')
-    .then((exists) => {
+    .then(() => {
       done();
     })
     .catch((err) => {
@@ -105,6 +103,16 @@ it('disk usage', (done) => {
 
 it('disk usage bucket', (done) => {
   s3.diskUsage('yudhapratama.com')
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      done(err.message);
+    });
+});
+
+it('sync folder to bucket', (done) => {
+  s3.syncFolder('bookslifestorage/testsync/', '~/Documents/processed/')
     .then(() => {
       done();
     })

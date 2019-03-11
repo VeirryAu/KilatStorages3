@@ -1,6 +1,6 @@
 {
   "name": "s3-kilatstorage",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Connect S3 KilatStorage with NodeJS",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "test:remove-object": "mocha -g 'remove object'",
     "test:exists-file": "mocha -g 'check file exists' --timeout 100000",
     "test:disk-usage": "mocha -g 'disk usage'",
-    "test:disk-usage-bucket": "mocha -g 'disk usage bucket'"
+    "test:disk-usage-bucket": "mocha -g 'disk usage bucket'",
+    "test:sync-folder": "mocha -g 'sync folder to bucket' --timeout 100000"
   },
   "keywords": [
     "S3",
