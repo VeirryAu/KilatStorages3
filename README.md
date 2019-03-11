@@ -59,6 +59,12 @@ kilatstorage.putObjectPublic('path-file', 'bucket-name')
     res.json(publicUrl);
   });
 ```
+### Synchronized folder to bucket
+```javascript
+const kilatstorage = require('s3-kilatstorage');
+kilatstorage.syncFolder('bucket-path', 'path-folder')
+  .then();
+```
 ### Download object
 ```javascript
 const kilatstorage = require('s3-kilatstorage');
