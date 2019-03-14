@@ -92,7 +92,7 @@ KilatS3.putObjectPublic = function putObjectPublic(pathFile, bucketName) {
 
 KilatS3.syncFolder = function syncFolder(bucketPath, localDirPath) {
   return new Promise((resolve, reject) => {
-    shell.exec(`s3cmd sync --acl-public ${localDirPath} s3://${bucketPath}`, (code, output, err) => {
+    shell.exec(`s3cmd sync --acl-public --no-mime-magic ${localDirPath} s3://${bucketPath}`, (code, output, err) => {
       if (code === 0) {
         resolve();
       } else {
