@@ -85,8 +85,17 @@ KilatS3.putObjectPublic = function putObjectPublic(pathFile, bucketName) {
 };
 
 KilatS3.syncFolder = function syncFolder(bucketPath, localDirPath) {
-  return new Promise((resolve, reject) => {
-    const results = exec(`s3cmd sync --acl-public --no-mime-magic ${localDirPath} s3://${bucketPath}`);
+  return new Promise(async (resolve, reject) => {
+    let results = exec(`s3cmd sync --acl-public --no-mime-magic ${localDirPath} s3://${bucketPath}`);
+    const folderName = localDirPath.split('/');
+    let totalSyncFile = exec(`s3cmd ls s3://${bucketPath}${folderName[folderName.length - 1]}/`);
+    const totalFile = exec(`ls ${localDirPath}`);
+
+    while (totalSyncFile.stdout.split('\n').length !== totalFile.stdout.split('\n').length) {
+      results = exec(`s3cmd sync --acl-public --no-mime-magic ${localDirPath} s3://${bucketPath}`);
+      totalSyncFile = exec(`s3cmd ls s3://${bucketPath}${folderName[folderName.length - 1]}/`);
+    }
+
     if (results.code === 0) {
       resolve();
     } else {
