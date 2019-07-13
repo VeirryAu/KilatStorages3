@@ -1,6 +1,6 @@
 {
   "name": "s3-kilatstorage",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Connect S3 KilatStorage with NodeJS",
   "main": "index.js",
   "scripts": {
@@ -41,6 +41,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "shelljs": "^0.8.3",
     "shelljs.exec": "^1.1.8"
   },
   "devDependencies": {
